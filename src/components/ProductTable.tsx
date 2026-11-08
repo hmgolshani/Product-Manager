@@ -4,7 +4,7 @@ import ProductRow from "./ProductRow.tsx";
 const ProductTable = () => {
     return (
         <div className="">
-            <div className="bg-amber-50 flex justify-around font-bold">
+            <div className="bg-amber-50 font-bold grid grid-cols-2 items-center rounded-lg">
                 <span>Product</span>
                 <span>Price</span>
             </div>

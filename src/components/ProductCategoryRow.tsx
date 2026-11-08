@@ -5,9 +5,9 @@ const ProductCategoryRow = (props:ProductCategoryRow) => {
     const {category} = props;
     return (
         <div>
-            <span className="flex items-center justify-center mt-5 font-bold text-xl">
+            <h4 className="bg-amber-300 w-full rounded-md p-1 mt-5 font-bold text-xl">
                 {category}
-            </span>
+            </h4>
         </div>
     );
 };
