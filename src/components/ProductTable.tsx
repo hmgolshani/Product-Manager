@@ -1,28 +1,54 @@
-import ProductCategoryRow from "./ProductCategoryRow.tsx";
+import type {Product} from "../types/product.ts";
+import ProductCard from "./ProductCard.tsx";
 import ProductRow from "./ProductRow.tsx";
 
-const ProductTable = () => {
+type ProductTableProps = {
+    products: Product[];
+    onEdit: (product: Product) => void;
+    onDelete: (product: Product) => void;
+
+}
+const ProductTable = ({products , onEdit , onDelete}: ProductTableProps) => {
     return (
-        <div className="">
-            <div className="bg-amber-50 font-bold grid grid-cols-2 items-center rounded-lg">
-                <span>Product</span>
-                <span>Price</span>
+        <>
+            {/*for desktop*/}
+
+            <div className="hidden overflow-hidden rounded-xl border border-slate-200 bg-white
+             md:block">
+
+                <table className="w-full text-sm">
+                    <thead className="bg-slate-100 text-left text-xs uppercase tracking-wide text-slate-600">
+                    <tr>
+                        <th className="px-4 py-3 font-medium">Name</th>
+                        <th className="px-4 py-3 font-medium">Category</th>
+                        <th className="px-4 py-3 text-right font-medium">Price</th>
+                        <th className="px-4 py-3 font-medium">Stock</th>
+                        <th className="px-4 py-3 text-right font-medium">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {products.map((product) => (
+                        <ProductRow key={product.id}
+                                    product={product}
+                                    onDelete={onDelete}
+                                    onEdit={onEdit}/>
+                    ))}
+                    </tbody>
+                </table>
             </div>
 
-            <ProductCategoryRow category={'fruits'}/>
-
-            <ProductRow name={'apple'} price={2}/>
-            <ProductRow name={'Dragonfruit'} price={1}/>
-            <ProductRow name={'Passionfruit'} price={2}/>
-
-
-            <ProductCategoryRow category={'vegetables'}/>
-            <ProductRow name={'spinach'} price={2}/>
-            <ProductRow name={'Pumpkin'} price={4}/>
-            <ProductRow name={'peas'} price={1}/>
-
-        </div>
-
+            {/*for mobile*/}
+            <ul className="space-y-2.5 md:hidden">
+                {
+                    products.map(product => (
+                        <ProductCard key={product.id}
+                                     product={product}
+                                     onEdit={onEdit}
+                                     onDelete={onDelete}/>
+                    ))
+                }
+            </ul>
+        </>
     );
 };
 
