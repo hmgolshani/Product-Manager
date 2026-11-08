@@ -18,7 +18,7 @@ const ProductRow = ({product , onDelete , onEdit}:ProductRowProps) => {
                 <CategoryBadge category={product.category}/>
             </td>
             <td className="px-4 py-3 text-right tabular-nums">
-                {`${product.price.toFixed(2)}`}
+                {`$${product.price.toFixed(2)}`}
             </td>
             <td className="px-4 py-3">
                 <StockBadge inStock={product.inStock}/>

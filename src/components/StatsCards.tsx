@@ -11,11 +11,11 @@ const StatsCards = ({products}:StateCardsProps) => {
     const inStockCount = products.filter(product => product.inStock ).length;
     const totalPrice =products.reduce((total, product) => total + product.price, 0) ;
     return (
-        <div className="my-5 grid grid-cols-2 gap-3 md:grid-cols-4">
+        <div className="my-5 grid grid-cols-2 gap-3 md:grid-cols-4 ">
             <StatCard label="Total Products" value={total} />
             <StatCard label="In stock" value={inStockCount} />
             <StatCard label="Out of Stock" value={total - inStockCount} />
-            <StatCard label="Total Value" value={totalPrice} />
+            <StatCard label="Total Value" value={` $${totalPrice.toFixed(2)}`} />
         </div>
     );
 };
