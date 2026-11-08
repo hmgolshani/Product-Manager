@@ -1,11 +1,10 @@
 import './App.css'
-import SearchBar from "./components/SearchBar.tsx";
-
+import FilterableProductTable from "./components/FilterableProductTable.tsx";
 function App() {
 
   return (
     <div>
-      <SearchBar/>
+      <FilterableProductTable />
     </div>
   )
 }
